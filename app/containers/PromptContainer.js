@@ -1,5 +1,5 @@
 var React = require('react');
-var transparentBg = require('../styles').transparentBg;
+var Prompt = require('../components/Prompt');
 
 var PromptContainer = React.createClass({
   contextTypes: {
@@ -10,12 +10,12 @@ var PromptContainer = React.createClass({
       username: ''
     };
   },
-  onUpdateUser: function(e) {
+  handleUpdateUser: function(e) {
     this.setState({
       username: e.target.value
     });
   },
-  onSubmitUser: function(e) {
+  handleSumbitUser: function(e) {
     e.preventDefault();
     var username = this.state.username;
     this.setState({
@@ -35,25 +35,11 @@ var PromptContainer = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <h1 style={transparentBg}>{this.props.route.header}</h1>
-        <div>
-          <form onSubmit={this.onSubmitUser}>
-            <div>
-              <input
-                palceholder="Github Username"
-                type="text"
-                onChange={this.onUpdateUser}
-                value={this.state.username} />
-            </div>
-            <div>
-              <button type="submit">
-                Continue
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <Prompt
+        onSubmitUser={this.handleSumbitUser}
+        onUpdateUser={this.handleUpdateUser}
+        header={this.props.route.header}
+        username={this.state.username} />
     );
   }
 });
