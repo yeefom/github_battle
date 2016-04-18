@@ -1,2 +1,2 @@
 # GitHub Battle
-A practice following [ReactJS program](http://reactjsprogram.com/).
+A project for [ReactJS program](http://reactjsprogram.com/).
