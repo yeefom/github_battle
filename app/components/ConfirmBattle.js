@@ -4,16 +4,13 @@ var Link = require('react-router').Link;
 var UserDetails = require('./UserDetails');
 var UserDetailsWrapper = require('./UserDetailsWrapper');
 var style = require('../styles/index');
-
-function puke(obj) {
-  return <pre>{JSON.stringify(obj, null, ' ')}</pre>;
-}
+var MainContainer = require('./MainContainer');
 
 function ConfirmBattle(props) {
   return (
     props.isLoading === true
       ? <p> Loading! </p>
-      : <div>
+      : <MainContainer>
           <h1>Confirm Players</h1>
           <div>
             <UserDetailsWrapper header="Player One">
@@ -35,7 +32,7 @@ function ConfirmBattle(props) {
             </Link>
           </div>
         </div>
-      </div>
+      </MainContainer>
   );
 }
 
