@@ -13,6 +13,15 @@ function StartOver() {
   );
 }
 
+function Tie() {
+  return (
+    <MainContainer>
+      <h1>It's a tie!</h1>
+      <StartOver/>
+    </MainContainer>
+  );
+}
+
 function Results(props) {
   if (props.isLoading === true) {
     return (
@@ -22,10 +31,7 @@ function Results(props) {
 
   if (props.scores[0] === props.scores[1]) {
     return (
-      <MainContainer>
-        <h1>It's a tie!</h1>
-        <StartOver/>
-      </MainContainer>
+      <Tie/>
     );
   }
 
