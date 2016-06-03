@@ -1,8 +1,8 @@
-var React = require('react');
-var Results = require('../components/Results');
- var githubHelpers = require('../utils/githubHelpers');
+import React from 'react';
+import Results from '../components/Results';
+import {battle} from '../utils/githubHelpers';
 
-var ResulsContainer = React.createClass({
+const ResulsContainer = React.createClass({
   getInitialState: function() {
     return {
       isLoading: true,
@@ -10,7 +10,7 @@ var ResulsContainer = React.createClass({
     };
   },
   componentDidMount: function() {
-    githubHelpers.battle(this.props.location.state.playersInfo)
+    battle(this.props.location.state.playersInfo)
     .then(function(scores) {
       this.setState({
         scores: scores,
@@ -28,4 +28,4 @@ var ResulsContainer = React.createClass({
   }
 });
 
-module.exports = ResulsContainer;
+export default ResulsContainer;

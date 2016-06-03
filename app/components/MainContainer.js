@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 function MainContainer(props) {
   return (
@@ -8,4 +8,4 @@ function MainContainer(props) {
   );
 }
 
-module.exports = MainContainer;
+export default MainContainer;

@@ -1,19 +1,19 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-function UserDetails (user) {
+function UserDetails ({score, info}) {
   return (
     <div>
-      {!!user.score && <li><h3>Score: {user.score}</h3></li>}
-      <li> <img src={user.info.avatar_url}/></li>
-      {user.info.name && <li>Name: {user.info.name}</li>}
-      <li>Username: {user.info.login}</li>
-      {user.info.location && <li>Location: {user.info.location}</li>}
-      {user.info.company && <li>Company: {user.info.company}</li>}
-      <li>Followers: {user.info.followers}</li>
-      <li>Following: {user.info.following}</li>
-      <li>Public Repos: {user.info.public_repos}</li>
-      {user.info.blog && <li>Blog: <a href={user.info.blog}> {user.info.blog}</a></li>}
+      {!!score && <li><h3>Score: {score}</h3></li>}
+      <li> <img src={info.avatar_url}/></li>
+      {info.name && <li>Name: {info.name}</li>}
+      <li>Username: {info.login}</li>
+      {info.location && <li>Location: {info.location}</li>}
+      {info.company && <li>Company: {info.company}</li>}
+      <li>Followers: {info.followers}</li>
+      <li>Following: {info.following}</li>
+      <li>Public Repos: {info.public_repos}</li>
+      {info.blog && <li>Blog: <a href={info.blog}> {info.blog}</a></li>}
     </div>
   );
 }
