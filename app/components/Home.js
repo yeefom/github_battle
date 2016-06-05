@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import MainContainer from './MainContainer';
 
 const Home = React.createClass({
-  render: function() {
+  render() {
     return (
       <MainContainer>
         <h1>GitHub Battle</h1>

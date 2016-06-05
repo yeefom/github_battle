@@ -13,20 +13,16 @@ function getRepos(username) {
 }
 
 function getTotalStars(repos) {
-  return repos.data.reduce(function(pre, cur) {
-    return pre + cur.stargazers_count;
-  }), 0;
+  return repos.data.reduce((pre, cur) => pre + cur.stargazers_count, 0);
 }
 
 function getPlayersData(player) {
   return getRepos(player.login)
     .then(getTotalStars)
-    .then(function(totalStars) {
-      return {
-        followers: player.followers,
-        totalStars: totalStars
-      };
-    });
+    .then(totalStars => ({
+      followers: player.followers,
+      totalStars: totalStars
+    }));
 }
 
 function calculateScores(players) {
@@ -38,15 +34,9 @@ function calculateScores(players) {
 
 export function getPlayersInfo (players) {
   // axios.all takes an array of promises, resolve each, and then
-  return axios.all(players.map(function(username) {
-    return getUserInfo(username);
-  })).then(function(info) {
-    return info.map(function(user) {
-      return user.data;
-    });
-  }).catch(function(err) {
-    console.warn('ERR in getPlayersInfo', err);
-  });
+  return axios.all(players.map(username => getUserInfo(username)))
+    .then(info => info.map(user => user.data))
+    .catch(err => console.warn('ERR in getPlayersInfo', err));
 }
 
 export function battle(players) {
@@ -55,7 +45,5 @@ export function battle(players) {
 
   return axios.all([playerOneData, playerTwoData])
     .then(calculateScores)
-    .catch(function(err) {
-      console.warn('ERR in battle', err);
-    });
+    .catch(err => console.warn('ERR in battle', err));
 }
