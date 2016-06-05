@@ -5,11 +5,11 @@ import axios from 'axios';
 // const param = "?client_id" + id + "&client_secrect=" + sec;
 
 function getUserInfo(username) {
-  return axios.get('https://api.github.com/users/' + username);
+  return axios.get(`https://api.github.com/users/${username}`);
 }
 
 function getRepos(username) {
-  return axios.get('https://api.github.com/users/' + username + '/repos');
+  return axios.get(`https://api.github.com/users/${username}/repos`);
 }
 
 function getTotalStars(repos) {
@@ -21,7 +21,7 @@ function getPlayersData(player) {
     .then(getTotalStars)
     .then(totalStars => ({
       followers: player.followers,
-      totalStars: totalStars
+      totalStars
     }));
 }
 
@@ -32,7 +32,7 @@ function calculateScores(players) {
   ];
 }
 
-export function getPlayersInfo (players) {
+export function getPlayersInfo(players) {
   // axios.all takes an array of promises, resolve each, and then
   return axios.all(players.map(username => getUserInfo(username)))
     .then(info => info.map(user => user.data))

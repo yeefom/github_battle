@@ -1,9 +1,9 @@
 import React from 'react';
 
-function MainContainer(props) {
+function MainContainer({children}) {
   return (
     <div>
-      {props.children}
+      {children}
     </div>
   );
 }

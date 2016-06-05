@@ -1,10 +1,10 @@
 import React from 'react';
 
-function UserDetailsWrapper(props) {
+function UserDetailsWrapper({header, children}) {
   return(
     <div>
-      <p>{props.header}</p>
-      {props.children}
+      <p>{header}</p>
+      {children}
     </div>
   );
 }

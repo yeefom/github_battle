@@ -2,18 +2,18 @@ import React, {PropTypes} from 'react';
 import {transparentBg} from '../styles';
 
 
-function Prompt(props) {
+function Prompt({header, onSubmitUser, onUpdateUser, username}) {
    return (
     <div>
-      <h1 style={transparentBg}>{props.header}</h1>
+      <h1 style={transparentBg}>{header}</h1>
       <div>
-        <form onSubmit={props.onSubmitUser}>
+        <form onSubmit={onSubmitUser}>
           <div>
             <input
               palceholder="Github Username"
               type="text"
-              onChange={props.onUpdateUser}
-              value={props.username} />
+              onChange={onUpdateUser}
+              value={username} />
           </div>
           <div>
             <button type="submit">
