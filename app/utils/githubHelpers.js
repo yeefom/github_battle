@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {logMsg} from './logMsg';
 
 // const id = 'CLIENT_ID';
 // const sec = 'SECRET_ID';
@@ -24,8 +25,11 @@ async function getPlayersData(player) {
       followers: player.followers,
       totalStars
     };
-  } catch(err) {
-    console.warn('ERR in getPlayersData:', err);
+  } catch (err) {
+    return logMsg(err.statusText, {
+      player,
+      err
+    });
   }
 }
 
@@ -40,8 +44,11 @@ export async function getPlayersInfo(players) {
   try {
     const info = await Promise.all(players.map(username => getUserInfo(username)));
     return info.map(user => user.data);
-  } catch(err) {
-    console.warn('ERR in getPlayersInfo:', err);
+  } catch (err) {
+    return logMsg(err.statusText, {
+      players,
+      err
+    });
   }
   // // axios.all takes an array of promises, resolve each, and then
   // return axios.all(players.map(username => getUserInfo(username)))
@@ -57,7 +64,10 @@ export async function battle(players) {
   try {
     const data = await Promise.all([playerOneData, playerTwoData]);
     return calculateScores(data);
-  } catch(err) {
-    console.warn('ERR in battle:', err);
+  } catch (err) {
+    return logMsg(err.statusText, {
+      players,
+      err
+    });
   }
 }
